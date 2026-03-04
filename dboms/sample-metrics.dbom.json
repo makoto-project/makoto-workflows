@@ -1,0 +1,18 @@
+{
+  "dbomVersion": "1.0.0",
+  "dataset": {
+    "name": "sample-metrics",
+    "version": "1.0.0",
+    "created": "2025-01-15T10:30:00Z",
+    "makotoLevel": "L1"
+  },
+  "sources": [
+    {
+      "name": "sample-metrics",
+      "attestationRef": "attestations/sample-metrics.origin.json",
+      "makotoLevel": "L1",
+      "geography": "US-WEST-2"
+    }
+  ],
+  "transformations": []
+}

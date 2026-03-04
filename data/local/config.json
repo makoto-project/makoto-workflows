@@ -1,0 +1,18 @@
+{
+  "pipeline": "sensor-monitoring-v1",
+  "version": "1.0.0",
+  "sensors": [
+    { "id": "sensor-west-01", "location": "US-WEST-2", "type": "environmental" },
+    { "id": "sensor-west-02", "location": "US-WEST-2", "type": "environmental" }
+  ],
+  "collection": {
+    "interval_seconds": 60,
+    "method": "scheduled-pull",
+    "format": "csv"
+  },
+  "thresholds": {
+    "temperature_c": { "min": -40, "max": 85 },
+    "humidity_pct": { "min": 0, "max": 100 },
+    "pressure_hpa": { "min": 870, "max": 1084 }
+  }
+}
