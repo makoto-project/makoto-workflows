@@ -1,0 +1,19 @@
+{
+  "entries": {
+    "actions/github-script@v8": {
+      "repo": "actions/github-script",
+      "version": "v8",
+      "sha": "ed597411d8f924073f98dfc5c65a23a2325f34cd"
+    },
+    "extractions/setup-just@v2": {
+      "repo": "extractions/setup-just",
+      "version": "v2",
+      "sha": "dd310ad5a97d8e7b41793f8ef055398d51ad4de6"
+    },
+    "github/gh-aw/actions/setup@v0.52.1": {
+      "repo": "github/gh-aw/actions/setup",
+      "version": "v0.52.1",
+      "sha": "a86e657586e4ac5f549a790628971ec02f6a4a8f"
+    }
+  }
+}

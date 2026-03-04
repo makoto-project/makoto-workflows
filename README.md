@@ -59,6 +59,16 @@ just demo-clean
 2. Select mode: `gate`, `auto-generate`, or `both`
 3. The workflow runs the same `just gate` commands as local
 
+## Quick Start (Agentic Workflow)
+
+The [agentic workflow](.github/workflows/dbom-agentic.md) uses [GitHub Agentic Workflows](https://github.com/github/gh-aw) to run the same pipeline with an AI agent that reasons about results and reports via discussions/issues.
+
+- **Manual**: Actions → **DBOM Agentic Gate** → **Run workflow**
+- **Automatic**: Pushes to `data/`, `dboms/`, or `attestations/` trigger it
+- **Scheduled**: Runs daily on weekdays
+
+See [docs/agentic-workflow.md](docs/agentic-workflow.md) for details.
+
 ## Repository Structure
 
 ```
@@ -76,8 +86,14 @@ aw-dbom/
 │   └── sample-metrics.origin.json    # Pre-existing origin attestation
 ├── dbom/                             # Vendored CLI (cloned at runtime)
 ├── .github/workflows/
-│   └── dbom-agent.yml                # GitHub Actions workflow
-├── SIGNING_ROADMAP.md                # Path from L1 → L2 signing
+│   ├── dbom-agent.yml                # GitHub Actions workflow
+│   └── dbom-agentic.md               # Agentic workflow (gh-aw)
+├── docs/                             # Documentation
+│   ├── local-cli.md
+│   ├── actions-workflow.md
+│   ├── agentic-workflow.md
+│   └── signing-roadmap.md
+├── SIGNING_ROADMAP.md → docs/        # (moved)
 └── _/
     ├── NOTES.md                      # Project notes
     └── PLAN.md                       # Implementation plan
@@ -128,13 +144,15 @@ This demo targets **Makoto L1** (Provenance Exists):
 - DBOM is an aggregate document referencing attestations
 - Validation follows the 4-step Makoto process
 
-See [SIGNING_ROADMAP.md](SIGNING_ROADMAP.md) for the path to L2 (Authentic Provenance) via Sigstore/cosign or GitHub GPG keys.
+See [docs/signing-roadmap.md](docs/signing-roadmap.md) for the path to L2 (Authentic Provenance) via Sigstore/cosign or GitHub GPG keys.
 
 ## Links
 
+- [**Documentation**](docs/) — Local CLI, Actions workflow, agentic workflow, signing roadmap
 - [usemakoto.dev](https://usemakoto.dev) — Makoto specification
 - [asw101/dbom](https://github.com/asw101/dbom) — Reusable CLI toolkit
 - [asw101/justfiles](https://github.com/asw101/justfiles) — Justfile pattern
+- [github/gh-aw](https://github.com/github/gh-aw) — GitHub Agentic Workflows
 
 ## License
 
