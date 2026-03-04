@@ -1,6 +1,6 @@
 # aw-dbom
 
-A GitHub Agentic Workflow demo showcasing [Makoto](https://usemakoto.dev) **Data Bills of Materials (DBOMs)** as a security/compliance gate for autonomous data pipelines.
+A GitHub Agentic Workflows demo showcasing [Makoto](https://usemakoto.dev) **Data Bills of Materials (DBOMs)** as a security/compliance gate for autonomous data pipelines.
 
 Uses the [asw101/dbom](https://github.com/asw101/dbom) CLI toolkit to generate, validate, and gate data assets — the same commands work locally and in CI.
 
@@ -59,7 +59,7 @@ just demo-clean
 2. Select mode: `gate`, `auto-generate`, or `both`
 3. The workflow runs the same `just gate` commands as local
 
-## Quick Start (GitHub Agentic Workflow)
+## Quick Start (GitHub Agentic Workflows)
 
 The [agentic workflow](.github/workflows/dbom-agentic.md) uses [GitHub Agentic Workflows](https://github.com/github/gh-aw) to run the same pipeline with an AI agent that reasons about results and reports via discussions/issues.
 
@@ -87,7 +87,7 @@ aw-dbom/
 ├── dbom/                             # Vendored CLI (cloned at runtime)
 ├── .github/workflows/
 │   ├── dbom-agent.yml                # GitHub Actions Workflow
-│   └── dbom-agentic.md               # GitHub Agentic Workflow (gh-aw)
+│   └── dbom-agentic.md               # GitHub Agentic Workflows (gh-aw)
 ├── docs/                             # Documentation
 │   ├── local-cli.md
 │   ├── actions-workflow.md
@@ -148,7 +148,7 @@ See [docs/signing-roadmap.md](docs/signing-roadmap.md) for the path to L2 (Authe
 
 ## Links
 
-- [**Documentation**](docs/) — Local CLI, GitHub Actions Workflow, GitHub Agentic Workflow, signing roadmap
+- [**Documentation**](docs/) — Local CLI, GitHub Actions Workflow, GitHub Agentic Workflows, signing roadmap
 - [usemakoto.dev](https://usemakoto.dev) — Makoto specification
 - [asw101/dbom](https://github.com/asw101/dbom) — Reusable CLI toolkit
 - [asw101/justfiles](https://github.com/asw101/justfiles) — Justfile pattern

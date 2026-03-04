@@ -46,7 +46,7 @@ The agent communicates through [safe outputs](https://github.github.com/gh-aw/re
 
 ```
 ┌──────────────────────────────────────────────────┐
-│  GitHub Agentic Workflow                         │
+│  GitHub Agentic Workflows                        │
 │                                                  │
 │  ┌──────────┐   ┌──────────┐   ┌──────────┐     │
 │  │  Setup   │-->│just gate │-->│ Analyze  │     │
