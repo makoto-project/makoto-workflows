@@ -53,13 +53,13 @@ just lineage dboms/sample-metrics.dbom.json
 just demo-clean
 ```
 
-## Quick Start (GitHub Actions)
+## Quick Start (GitHub Actions Workflow)
 
 1. Go to **Actions** → **DBOM Gate** → **Run workflow**
 2. Select mode: `gate`, `auto-generate`, or `both`
 3. The workflow runs the same `just gate` commands as local
 
-## Quick Start (Agentic Workflow)
+## Quick Start (GitHub Agentic Workflow)
 
 The [agentic workflow](.github/workflows/dbom-agentic.md) uses [GitHub Agentic Workflows](https://github.com/github/gh-aw) to run the same pipeline with an AI agent that reasons about results and reports via discussions/issues.
 
@@ -86,8 +86,8 @@ aw-dbom/
 │   └── sample-metrics.origin.json    # Pre-existing origin attestation
 ├── dbom/                             # Vendored CLI (cloned at runtime)
 ├── .github/workflows/
-│   ├── dbom-agent.yml                # GitHub Actions workflow
-│   └── dbom-agentic.md               # Agentic workflow (gh-aw)
+│   ├── dbom-agent.yml                # GitHub Actions Workflow
+│   └── dbom-agentic.md               # GitHub Agentic Workflow (gh-aw)
 ├── docs/                             # Documentation
 │   ├── local-cli.md
 │   ├── actions-workflow.md
@@ -146,7 +146,7 @@ See [docs/signing-roadmap.md](docs/signing-roadmap.md) for the path to L2 (Authe
 
 ## Links
 
-- [**Documentation**](docs/) — Local CLI, Actions workflow, agentic workflow, signing roadmap
+- [**Documentation**](docs/) — Local CLI, GitHub Actions Workflow, GitHub Agentic Workflow, signing roadmap
 - [usemakoto.dev](https://usemakoto.dev) — Makoto specification
 - [asw101/dbom](https://github.com/asw101/dbom) — Reusable CLI toolkit
 - [asw101/justfiles](https://github.com/asw101/justfiles) — Justfile pattern
