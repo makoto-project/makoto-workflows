@@ -9,14 +9,14 @@ Uses the [asw101/dbom](https://github.com/asw101/dbom) CLI toolkit to generate, 
 An agentic workflow that **discovers**, **fetches**, **attests**, and **gates** data assets:
 
 ```
-┌──────────┐   ┌──────────┐   ┌───────────────┐   ┌──────────┐
-│ Discover │-->│  Fetch   │-->│ Auto-Generate │-->│   Gate   │
-│  assets  │   │ external │   │    DBOMs      │   │ validate │
-└──────────┘   └──────────┘   └───────────────┘   └──────────┘
-  Scan data/     Download       Create origin       4-step Makoto
-  for CSV,       from URLs      attestations +      verification:
-  JSON, etc.     in sources     DBOM for assets     fetch, verify,
-                 .yaml          missing them        hash, lineage
+┌───────────────┐   ┌───────────────┐   ┌───────────────┐   ┌───────────────┐
+│    Discover   │-->│     Fetch     │-->│ Auto-Generate │-->│     Gate      │
+│    assets     │   │   external    │   │     DBOMs     │   │   validate    │
+└───────────────┘   └───────────────┘   └───────────────┘   └───────────────┘
+  Scan data/ for      Download from       Create origin       4-step Makoto
+  CSV, JSON, etc.     URLs in sources     attestations +      verification:
+                      .yaml               DBOM for assets     fetch, verify,
+                                          missing them        hash, lineage
 ```
 
 ### Two Modes
