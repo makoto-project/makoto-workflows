@@ -94,7 +94,9 @@ aw-dbom/
 │   ├── agentic-workflow.md
 │   └── signing-roadmap.md
 └── _/
-    └── PLAN.md                       # Implementation plan
+    ├── README.md                     # About these planning docs
+    ├── PLAN.md                       # Original implementation plan
+    └── PLAN-AW.md                    # Agentic workflow plan
 ```
 
 ## Example Output
