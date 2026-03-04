@@ -55,9 +55,13 @@ just demo-clean
 
 ## Quick Start (GitHub Actions Workflow)
 
+The [Actions workflow](.github/workflows/dbom-agent.yml) runs the DBOM gate pipeline as a deterministic CI job.
+
 1. Go to **Actions** → **DBOM Gate** → **Run workflow**
 2. Select mode: `gate`, `auto-generate`, or `both`
 3. The workflow runs the same `just gate` commands as local
+
+See [docs/actions-workflow.md](docs/actions-workflow.md) for details.
 
 ## Quick Start (GitHub Agentic Workflows)
 
