@@ -8,7 +8,7 @@ Three ways to run the DBOM pipeline — pick the one that fits your workflow.
 | [**Actions Workflow**](actions-workflow.md) | Push or manual dispatch | CI/CD, deterministic gating |
 | [**Agentic Workflow**](agentic-workflow.md) | Push, dispatch, or schedule | AI-assisted auditing, smart reporting |
 
-All three use the same [asw101/dbom](https://github.com/asw101/dbom) CLI toolkit under the hood.
+All three use the same [makoto-project/dbom](https://github.com/makoto-project/dbom) CLI toolkit under the hood.
 
 ## Other Docs
 

@@ -42,7 +42,7 @@ jobs:
         run: pip install pyyaml
 
       - name: Clone dbom CLI toolkit
-        run: git clone https://github.com/asw101/dbom.git dbom
+        run: git clone https://github.com/makoto-project/dbom.git dbom
 
       - name: Run DBOM gate pipeline
         run: just --justfile dbom/Justfile gate ${{ github.event.inputs.mode || 'both' }}

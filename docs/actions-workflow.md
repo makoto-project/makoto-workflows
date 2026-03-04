@@ -15,7 +15,7 @@ A traditional GitHub Actions workflow that runs the DBOM gate pipeline as a dete
 
 1. Checks out the repo
 2. Sets up Python 3.12 and installs `just`
-3. Clones the [asw101/dbom](https://github.com/asw101/dbom) toolkit
+3. Clones the [makoto-project/dbom](https://github.com/makoto-project/dbom) toolkit
 4. Runs `just gate` with the selected mode
 5. Posts the status table to the GitHub Actions step summary
 

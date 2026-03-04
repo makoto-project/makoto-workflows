@@ -4,7 +4,7 @@ root := justfile_directory()
 # Vendored dbom CLI
 dbom_dir := root / "dbom"
 dbom_justfile := dbom_dir / "Justfile"
-dbom_repo := "https://github.com/asw101/dbom.git"
+dbom_repo := "https://github.com/makoto-project/dbom.git"
 
 # List available recipes
 default:

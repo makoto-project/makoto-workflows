@@ -2,7 +2,7 @@
 
 A GitHub Agentic Workflows demo showcasing [Makoto](https://usemakoto.dev) **Data Bills of Materials (DBOMs)** as a security/compliance gate for autonomous data pipelines.
 
-Uses the [asw101/dbom](https://github.com/asw101/dbom) CLI toolkit to generate, validate, and gate data assets — the same commands work locally and in CI.
+Uses the [makoto-project/dbom](https://github.com/makoto-project/dbom) CLI toolkit to generate, validate, and gate data assets — the same commands work locally and in CI.
 
 ## What This Demo Shows
 
@@ -34,7 +34,7 @@ An agentic workflow that **discovers**, **fetches**, **attests**, and **gates** 
 brew install just  # macOS
 
 # Clone
-git clone https://github.com/asw101/aw-dbom.git
+git clone https://github.com/makoto-project/aw-dbom.git
 cd aw-dbom
 
 # Vendor the dbom CLI toolkit
@@ -161,8 +161,8 @@ See [docs/signing-roadmap.md](docs/signing-roadmap.md) for the path to L2 (Authe
 
 - [**Documentation**](docs/) — Local CLI, GitHub Actions Workflow, GitHub Agentic Workflows, signing roadmap
 - [usemakoto.dev](https://usemakoto.dev) — Makoto specification
-- [asw101/dbom](https://github.com/asw101/dbom) — Reusable CLI toolkit
-- [asw101/justfiles](https://github.com/asw101/justfiles) — Justfile pattern
+- [makoto-project/dbom](https://github.com/makoto-project/dbom) — Reusable CLI toolkit
+- [makoto-project/justfiles](https://github.com/makoto-project/justfiles) — Justfile pattern
 - [github/gh-aw](https://github.com/github/gh-aw) — GitHub Agentic Workflows
 
 ## License

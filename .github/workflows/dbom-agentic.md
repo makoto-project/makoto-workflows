@@ -35,7 +35,7 @@ steps:
   - name: Install dependencies and clone DBOM toolkit
     run: |
       pip install pyyaml
-      git clone https://github.com/asw101/dbom.git dbom
+      git clone https://github.com/makoto-project/dbom.git dbom
   - name: Install just
     uses: extractions/setup-just@v2
 ---

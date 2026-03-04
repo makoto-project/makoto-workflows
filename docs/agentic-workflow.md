@@ -24,7 +24,7 @@ An AI-powered workflow using [GitHub Agentic Workflows (gh-aw)](https://github.c
 
 ## What the Agent Does
 
-1. **Setup** — Clones the `asw101/dbom` toolkit, installs dependencies
+1. **Setup** — Clones the `makoto-project/dbom` toolkit, installs dependencies
 2. **Run pipeline** — Executes `just gate both` (same as local/Actions)
 3. **Analyze** — Reads output, identifies failures, missing DBOMs, anomalies
 4. **Report** via safe outputs:

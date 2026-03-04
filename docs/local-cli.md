@@ -1,6 +1,6 @@
 # Local CLI Usage
 
-Run the DBOM pipeline locally using [just](https://github.com/casey/just) and the [asw101/dbom](https://github.com/asw101/dbom) CLI toolkit.
+Run the DBOM pipeline locally using [just](https://github.com/casey/just) and the [makoto-project/dbom](https://github.com/makoto-project/dbom) CLI toolkit.
 
 ## Prerequisites
 
@@ -11,14 +11,14 @@ Run the DBOM pipeline locally using [just](https://github.com/casey/just) and th
 ## Setup
 
 ```bash
-git clone https://github.com/asw101/aw-dbom.git
+git clone https://github.com/makoto-project/aw-dbom.git
 cd aw-dbom
 
 # Vendor the dbom CLI toolkit (clone into dbom/)
 just vendor
 ```
 
-The `vendor` recipe clones [asw101/dbom](https://github.com/asw101/dbom) into `dbom/` (gitignored). Run it again to pull the latest version.
+The `vendor` recipe clones [makoto-project/dbom](https://github.com/makoto-project/dbom) into `dbom/` (gitignored). Run it again to pull the latest version.
 
 ## Recipes
 
@@ -60,7 +60,7 @@ $ just demo
 Clone the toolkit once and use it from anywhere:
 
 ```bash
-git clone https://github.com/asw101/dbom.git ~/dbom
+git clone https://github.com/makoto-project/dbom.git ~/dbom
 alias dbom='just --justfile ~/dbom/Justfile'
 
 # Then from any project directory:
@@ -69,4 +69,4 @@ dbom validate-all
 dbom gate
 ```
 
-See the [asw101/justfiles](https://github.com/asw101/justfiles) repo for more on this pattern.
+See the [makoto-project/justfiles](https://github.com/makoto-project/justfiles) repo for more on this pattern.
