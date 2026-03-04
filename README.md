@@ -122,7 +122,10 @@ aw-dbom/
   ✓ Attestation: attestations/config.origin.json
   ✓ DBOM:        dboms/config.dbom.json
 
-▸ Step 4: Validating all DBOMs...
+▸ Step 4: Checking DBOM coverage...
+  ✓ All assets have DBOMs
+
+▸ Step 5: Validating all DBOMs...
   ✓ config.dbom.json: PASS
   ✓ iris.dbom.json: PASS
   ✓ sample-metrics.dbom.json: PASS
