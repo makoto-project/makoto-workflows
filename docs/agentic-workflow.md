@@ -48,16 +48,16 @@ The agent communicates through [safe outputs](https://github.github.com/gh-aw/re
 ┌────────────────────────────────────────────────┐
 │  GitHub Agentic Workflows                      │
 │                                                │
-│  ┌──────────┐   ┌──────────┐   ┌──────────┐   │
-│  │  Setup   │──>│just gate │──>│ Analyze  │   │
-│  │ (steps)  │   │  (bash)  │   │ (agent)  │   │
-│  └──────────┘   └──────────┘   └─────┬────┘   │
-│                                      │        │
-│                          ┌───────────┴──────┐ │
-│                          │   Safe Outputs   │ │
-│                          │  discussion /    │ │
-│                          │  issue / noop    │ │
-│                          └──────────────────┘ │
+│  ┌──────────┐   ┌──────────┐   ┌──────────┐    │
+│  │  Setup   │──>│just gate │──>│ Analyze  │    │
+│  │ (steps)  │   │  (bash)  │   │ (agent)  │    │
+│  └──────────┘   └──────────┘   └─────┬────┘    │
+│                                      │         │
+│                        ┌─────────────┴──────┐  │
+│                        │    Safe Outputs    │  │
+│                        │   discussion /     │  │
+│                        │   issue / noop     │  │
+│                        └────────────────────┘  │
 └────────────────────────────────────────────────┘
 ```
 
