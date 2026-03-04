@@ -93,9 +93,7 @@ aw-dbom/
 │   ├── actions-workflow.md
 │   ├── agentic-workflow.md
 │   └── signing-roadmap.md
-├── SIGNING_ROADMAP.md → docs/        # (moved)
 └── _/
-    ├── NOTES.md                      # Project notes
     └── PLAN.md                       # Implementation plan
 ```
 
