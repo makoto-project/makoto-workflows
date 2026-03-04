@@ -1,2 +1,11 @@
 # Vendored dbom CLI (cloned via `just vendor`)
 /dbom/
+
+# Generated demo artifacts (just demo-clean to remove)
+attestations/*
+!attestations/sample-metrics.origin.json
+dboms/*
+!dboms/sample-metrics.dbom.json
+data/external/*
+!data/external/sources.yaml
+data/local/*_filtered.*
