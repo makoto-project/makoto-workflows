@@ -37,6 +37,9 @@ brew install just  # macOS
 git clone https://github.com/asw101/aw-dbom.git
 cd aw-dbom
 
+# Vendor the dbom CLI toolkit
+just vendor
+
 # Run the full demo
 just demo
 
@@ -77,6 +80,7 @@ See [docs/agentic-workflow.md](docs/agentic-workflow.md) for details.
 
 ```
 aw-dbom/
+├── .gitignore                        # Excludes vendored dbom/
 ├── Justfile                          # Demo entrypoint (wraps dbom CLI)
 ├── data/
 │   ├── local/
@@ -88,7 +92,7 @@ aw-dbom/
 │   └── sample-metrics.dbom.json      # Pre-existing DBOM (gate-pass demo)
 ├── attestations/
 │   └── sample-metrics.origin.json    # Pre-existing origin attestation
-├── dbom/                             # Vendored CLI (cloned at runtime)
+├── dbom/                             # Vendored CLI (via `just vendor`)
 ├── .github/workflows/
 │   ├── dbom-agent.yml                # GitHub Actions Workflow
 │   └── dbom-agentic.md               # GitHub Agentic Workflows (gh-aw)

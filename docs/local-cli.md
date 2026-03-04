@@ -13,13 +13,17 @@ Run the DBOM pipeline locally using [just](https://github.com/casey/just) and th
 ```bash
 git clone https://github.com/asw101/aw-dbom.git
 cd aw-dbom
+
+# Vendor the dbom CLI toolkit (clone into dbom/)
+just vendor
 ```
 
-The repo's `Justfile` wraps the `dbom` CLI toolkit, cloning it on first run if not present.
+The `vendor` recipe clones [asw101/dbom](https://github.com/asw101/dbom) into `dbom/` (gitignored). Run it again to pull the latest version.
 
 ## Recipes
 
 ```bash
+just vendor            # Clone or update the dbom CLI toolkit
 just demo              # Run the full pipeline (auto-generate + gate)
 just demo gate         # Gate-only mode (validate existing DBOMs)
 just status            # Show status table of all assets
