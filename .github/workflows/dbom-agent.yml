@@ -1,0 +1,63 @@
+name: DBOM Gate
+
+on:
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'Gate mode: gate (validate only), auto-generate (create missing DBOMs), or both'
+        required: true
+        default: 'both'
+        type: choice
+        options:
+          - gate
+          - auto-generate
+          - both
+  push:
+    paths:
+      - 'data/**'
+      - 'dboms/**'
+      - 'attestations/**'
+
+permissions:
+  contents: read
+
+jobs:
+  dbom-gate:
+    name: DBOM Gate (${{ github.event.inputs.mode || 'both' }})
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install just
+        uses: extractions/setup-just@v2
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Clone dbom CLI toolkit
+        run: git clone https://github.com/asw101/dbom.git dbom
+
+      - name: Run DBOM gate pipeline
+        run: just --justfile dbom/Justfile gate ${{ github.event.inputs.mode || 'both' }}
+
+      - name: Show DBOM status
+        if: always()
+        run: just --justfile dbom/Justfile status
+
+      - name: Post summary
+        if: always()
+        run: |
+          echo "## DBOM Gate Results" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo "**Mode:** \`${{ github.event.inputs.mode || 'both' }}\`" >> $GITHUB_STEP_SUMMARY
+          echo "" >> $GITHUB_STEP_SUMMARY
+          echo '```' >> $GITHUB_STEP_SUMMARY
+          just --justfile dbom/Justfile status >> $GITHUB_STEP_SUMMARY 2>&1 || true
+          echo '```' >> $GITHUB_STEP_SUMMARY
