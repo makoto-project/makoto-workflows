@@ -282,7 +282,7 @@ jobs:
       - name: Install dependencies and clone DBOM toolkit
         run: |
           pip install pyyaml
-          git clone https://github.com/asw101/dbom.git dbom
+          git clone https://github.com/makoto-project/makoto-cli.git makoto-cli
       - name: Install just
         uses: extractions/setup-just@dd310ad5a97d8e7b41793f8ef055398d51ad4de6 # v2
 

@@ -1,8 +1,8 @@
-# aw-dbom
+# makoto-workflows
 
 A GitHub Agentic Workflows demo showcasing [Makoto](https://usemakoto.dev) **Data Bills of Materials (DBOMs)** as a security/compliance gate for autonomous data pipelines.
 
-Uses the [makoto-project/dbom](https://github.com/makoto-project/dbom) CLI toolkit to generate, validate, and gate data assets — the same commands work locally and in CI.
+Uses the [makoto-project/makoto-cli](https://github.com/makoto-project/makoto-cli) CLI toolkit to generate, validate, and gate data assets — the same commands work locally and in CI.
 
 ## What This Demo Shows
 
@@ -34,10 +34,10 @@ An agentic workflow that **discovers**, **fetches**, **attests**, and **gates** 
 brew install just  # macOS
 
 # Clone
-git clone https://github.com/makoto-project/aw-dbom.git
-cd aw-dbom
+git clone https://github.com/makoto-project/makoto-workflows.git
+cd makoto-workflows
 
-# Vendor the dbom CLI toolkit
+# Vendor the makoto-cli CLI toolkit
 just vendor
 
 # Run the full demo
@@ -79,9 +79,9 @@ See [docs/agentic-workflow.md](docs/agentic-workflow.md) for details.
 ## Repository Structure
 
 ```
-aw-dbom/
-├── .gitignore                        # Excludes vendored dbom/
-├── Justfile                          # Demo entrypoint (wraps dbom CLI)
+makoto-workflows/
+├── .gitignore                        # Excludes vendored makoto-cli/
+├── Justfile                          # Demo entrypoint (wraps makoto-cli CLI)
 ├── data/
 │   ├── local/
 │   │   ├── sample-metrics.csv        # Sample sensor data (has DBOM ✓)
@@ -92,7 +92,7 @@ aw-dbom/
 │   └── sample-metrics.dbom.json      # Pre-existing DBOM (gate-pass demo)
 ├── attestations/
 │   └── sample-metrics.origin.json    # Pre-existing origin attestation
-├── dbom/                             # Vendored CLI (via `just vendor`)
+├── makoto-cli/                       # Vendored CLI (via `just vendor`)
 ├── .github/workflows/
 │   ├── dbom-agent.yml                # GitHub Actions Workflow
 │   └── dbom-agentic.md               # GitHub Agentic Workflows (gh-aw)
@@ -161,7 +161,7 @@ See [docs/signing-roadmap.md](docs/signing-roadmap.md) for the path to L2 (Authe
 
 - [**Documentation**](docs/) — Local CLI, GitHub Actions Workflow, GitHub Agentic Workflows, signing roadmap
 - [usemakoto.dev](https://usemakoto.dev) — Makoto specification
-- [makoto-project/dbom](https://github.com/makoto-project/dbom) — Reusable CLI toolkit
+- [makoto-project/makoto-cli](https://github.com/makoto-project/makoto-cli) — Reusable CLI toolkit
 - [makoto-project/justfiles](https://github.com/makoto-project/justfiles) — Justfile pattern
 - [github/gh-aw](https://github.com/github/gh-aw) — GitHub Agentic Workflows
 

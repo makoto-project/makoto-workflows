@@ -1,10 +1,10 @@
 # Directory containing this Justfile
 root := justfile_directory()
 
-# Vendored dbom CLI
-dbom_dir := root / "dbom"
-dbom_justfile := dbom_dir / "Justfile"
-dbom_repo := "https://github.com/makoto-project/dbom.git"
+# Vendored makoto-cli CLI
+makoto_cli_dir := root / "makoto-cli"
+makoto_cli_justfile := makoto_cli_dir / "Justfile"
+makoto_cli_repo := "https://github.com/makoto-project/makoto-cli.git"
 
 # List available recipes
 default:
@@ -12,19 +12,19 @@ default:
 
 # --- Vendor ---
 
-# Clone or update the vendored dbom CLI toolkit
+# Clone or update the vendored makoto-cli CLI toolkit
 vendor:
     #!/usr/bin/env bash
     set -euo pipefail
-    if [ -d "{{dbom_dir}}/.git" ]; then
-        echo "Updating vendored dbom CLI..."
-        git -C "{{dbom_dir}}" pull --ff-only
+    if [ -d "{{makoto_cli_dir}}/.git" ]; then
+        echo "Updating vendored makoto-cli CLI..."
+        git -C "{{makoto_cli_dir}}" pull --ff-only
     else
-        echo "Cloning dbom CLI toolkit..."
-        rm -rf "{{dbom_dir}}"
-        git clone "{{dbom_repo}}" "{{dbom_dir}}"
+        echo "Cloning makoto-cli CLI toolkit..."
+        rm -rf "{{makoto_cli_dir}}"
+        git clone "{{makoto_cli_repo}}" "{{makoto_cli_dir}}"
     fi
-    echo "✓ dbom CLI ready at {{dbom_dir}}"
+    echo "✓ makoto-cli CLI ready at {{makoto_cli_dir}}"
 
 # --- Demo ---
 
@@ -34,23 +34,23 @@ demo mode="both": vendor
     set -euo pipefail
     echo "🚀 Running DBOM demo (mode: {{mode}})..."
     echo ""
-    just --justfile "{{dbom_justfile}}" gate {{mode}}
+    just --justfile "{{makoto_cli_justfile}}" gate {{mode}}
     echo ""
-    just --justfile "{{dbom_justfile}}" status
+    just --justfile "{{makoto_cli_justfile}}" status
 
 # Show status of all data assets
-status: _require-dbom
-    @just --justfile "{{dbom_justfile}}" status
+status: _require-makoto-cli
+    @just --justfile "{{makoto_cli_justfile}}" status
 
 # Show DBOM lineage for an asset
-lineage file: _require-dbom
-    @just --justfile "{{dbom_justfile}}" lineage {{file}}
+lineage file: _require-makoto-cli
+    @just --justfile "{{makoto_cli_justfile}}" lineage {{file}}
 
-# Internal: ensure dbom CLI is vendored
-_require-dbom:
+# Internal: ensure makoto-cli CLI is vendored
+_require-makoto-cli:
     #!/usr/bin/env bash
-    if [ ! -f "{{dbom_justfile}}" ]; then
-        echo "dbom CLI not found. Run 'just vendor' first." >&2
+    if [ ! -f "{{makoto_cli_justfile}}" ]; then
+        echo "makoto-cli CLI not found. Run 'just vendor' first." >&2
         exit 1
     fi
 

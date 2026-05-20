@@ -24,7 +24,7 @@ An AI-powered workflow using [GitHub Agentic Workflows (gh-aw)](https://github.c
 
 ## What the Agent Does
 
-1. **Setup** — Clones the `makoto-project/dbom` toolkit, installs dependencies
+1. **Setup** — Clones the `makoto-project/makoto-cli` toolkit, installs dependencies
 2. **Run pipeline** — Executes `just gate both` (same as local/Actions)
 3. **Analyze** — Reads output, identifies failures, missing DBOMs, anomalies
 4. **Report** via safe outputs:
@@ -115,7 +115,7 @@ gh aw secrets set COPILOT_GITHUB_TOKEN --value "<your-github-pat>"
 gh aw secrets bootstrap
 ```
 
-### 4. Initialize the repository (already done for aw-dbom)
+### 4. Initialize the repository (already done for makoto-workflows)
 
 ```bash
 gh aw init
@@ -141,7 +141,7 @@ The workflow will also run automatically on:
 
 After the run completes (2-5 minutes), check:
 - **Discussions** tab — for audit summaries (when everything passes)
-- **Issues** tab — for validation failures (tagged `dbom`, `automated`)
+- **Issues** tab — for validation failures (tagged `makoto-cli`, `automated`)
 - **Actions** tab — for run logs and details
 
 ### Using a different engine

@@ -35,7 +35,7 @@ steps:
   - name: Install dependencies and clone DBOM toolkit
     run: |
       pip install pyyaml
-      git clone https://github.com/makoto-project/dbom.git dbom
+      git clone https://github.com/makoto-project/makoto-cli.git makoto-cli
   - name: Install just
     uses: extractions/setup-just@v2
 ---
@@ -50,7 +50,7 @@ You are a data compliance agent responsible for validating Data Bills of Materia
 - **Trigger**: ${{ github.event_name }}
 - **Commit**: ${{ github.event.after }}
 
-This repository contains data assets (CSV, JSON files) under `data/` that must have valid DBOMs. The DBOM CLI toolkit is available at `dbom/` (cloned in the setup step).
+This repository contains data assets (CSV, JSON files) under `data/` that must have valid DBOMs. The DBOM CLI toolkit is available at `makoto-cli/` (cloned in the setup step).
 
 ## Your Task
 
@@ -59,7 +59,7 @@ This repository contains data assets (CSV, JSON files) under `data/` that must h
 Run the full gate pipeline to discover, generate, and validate DBOMs for all data assets:
 
 ```bash
-just --justfile dbom/Justfile gate both
+just --justfile makoto-cli/Justfile gate both
 ```
 
 Capture both stdout and stderr. The pipeline will:
@@ -73,7 +73,7 @@ Capture both stdout and stderr. The pipeline will:
 Run the status command to get a summary table:
 
 ```bash
-just --justfile dbom/Justfile status
+just --justfile makoto-cli/Justfile status
 ```
 
 ### Step 3: Analyze Results
@@ -145,6 +145,6 @@ Before creating an issue, check if there's already an open issue with the `[DBOM
 ## Important Notes
 
 - Always run both `gate` and `status` commands before reporting.
-- The DBOM toolkit is at `dbom/` — all commands use `just --justfile dbom/Justfile`.
+- The DBOM toolkit is at `makoto-cli/` — all commands use `just --justfile makoto-cli/Justfile`.
 - If a command fails to run at all (not validation failure, but a script error), report that in your output too.
 - You **MUST** call exactly one safe output type before finishing: `create-discussion`, `create-issue`, or `noop`.

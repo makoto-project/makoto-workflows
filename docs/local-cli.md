@@ -1,6 +1,6 @@
 # Local CLI Usage
 
-Run the DBOM pipeline locally using [just](https://github.com/casey/just) and the [makoto-project/dbom](https://github.com/makoto-project/dbom) CLI toolkit.
+Run the DBOM pipeline locally using [just](https://github.com/casey/just) and the [makoto-project/makoto-cli](https://github.com/makoto-project/makoto-cli) CLI toolkit.
 
 ## Prerequisites
 
@@ -11,19 +11,19 @@ Run the DBOM pipeline locally using [just](https://github.com/casey/just) and th
 ## Setup
 
 ```bash
-git clone https://github.com/makoto-project/aw-dbom.git
-cd aw-dbom
+git clone https://github.com/makoto-project/makoto-workflows.git
+cd makoto-workflows
 
-# Vendor the dbom CLI toolkit (clone into dbom/)
+# Vendor the makoto-cli CLI toolkit (clone into makoto-cli/)
 just vendor
 ```
 
-The `vendor` recipe clones [makoto-project/dbom](https://github.com/makoto-project/dbom) into `dbom/` (gitignored). Run it again to pull the latest version.
+The `vendor` recipe clones [makoto-project/makoto-cli](https://github.com/makoto-project/makoto-cli) into `makoto-cli/` (gitignored). Run it again to pull the latest version.
 
 ## Recipes
 
 ```bash
-just vendor            # Clone or update the dbom CLI toolkit
+just vendor            # Clone or update the makoto-cli CLI toolkit
 just demo              # Run the full pipeline (auto-generate + gate)
 just demo gate         # Gate-only mode (validate existing DBOMs)
 just status            # Show status table of all assets
@@ -60,13 +60,13 @@ $ just demo
 Clone the toolkit once and use it from anywhere:
 
 ```bash
-git clone https://github.com/makoto-project/dbom.git ~/dbom
-alias dbom='just --justfile ~/dbom/Justfile'
+git clone https://github.com/makoto-project/makoto-cli.git ~/makoto-cli
+alias makoto-cli='just --justfile ~/makoto-cli/Justfile'
 
 # Then from any project directory:
-dbom generate mydata.csv
-dbom validate-all
-dbom gate
+makoto-cli generate mydata.csv
+makoto-cli validate-all
+makoto-cli gate
 ```
 
 See the [makoto-project/justfiles](https://github.com/makoto-project/justfiles) repo for more on this pattern.

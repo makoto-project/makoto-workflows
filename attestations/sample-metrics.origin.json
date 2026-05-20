@@ -17,9 +17,9 @@
       "geography": "US-WEST-2"
     },
     "collector": {
-      "id": "https://github.com/asw101/aw-dbom",
+      "id": "https://github.com/makoto-project/makoto-workflows",
       "version": {
-        "dbom-cli": "0.1.0"
+        "makoto-cli": "0.1.0"
       }
     },
     "schema": {

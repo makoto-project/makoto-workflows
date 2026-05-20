@@ -1,5 +1,5 @@
-# Vendored dbom CLI (cloned via `just vendor`)
-/dbom/
+# Vendored makoto-cli CLI (cloned via `just vendor`)
+/makoto-cli/
 
 # Generated demo artifacts (just demo-clean to remove)
 attestations/*
