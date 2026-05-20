@@ -47,7 +47,7 @@ You are a data compliance agent responsible for validating Data Bills of Materia
 ## Context
 
 - **Repository**: ${{ github.repository }}
-- **Trigger**: ${{ github.event_name }}
+- **Trigger**: ${{ env.GH_AW_GITHUB_EVENT_NAME }}
 - **Commit**: ${{ github.event.after }}
 
 This repository contains data assets (CSV, JSON files) under `data/` that must have valid DBOMs. The DBOM CLI toolkit is available at `makoto-cli/` (cloned in the setup step).
