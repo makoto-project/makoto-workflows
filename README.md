@@ -96,15 +96,11 @@ makoto-workflows/
 ├── .github/workflows/
 │   ├── dbom-agent.yml                # GitHub Actions Workflow
 │   └── dbom-agentic.md               # GitHub Agentic Workflows (gh-aw)
-├── docs/                             # Documentation
-│   ├── local-cli.md
-│   ├── actions-workflow.md
-│   ├── agentic-workflow.md
-│   └── signing-roadmap.md
-└── _/
-    ├── README.md                     # About these planning docs
-    ├── PLAN.md                       # Original implementation plan
-    └── PLAN-AW.md                    # Agentic workflow plan
+└── docs/                             # Documentation
+    ├── local-cli.md
+    ├── actions-workflow.md
+    ├── agentic-workflow.md
+    └── signing-roadmap.md
 ```
 
 ## Example Output
