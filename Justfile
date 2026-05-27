@@ -24,6 +24,8 @@ vendor:
         rm -rf "{{makoto_cli_dir}}"
         git clone "{{makoto_cli_repo}}" "{{makoto_cli_dir}}"
     fi
+    echo "Installing makoto-cli dependencies (makoto SDK)..."
+    just --justfile "{{makoto_cli_justfile}}" install
     echo "✓ makoto-cli CLI ready at {{makoto_cli_dir}}"
 
 # --- Demo ---
@@ -54,13 +56,12 @@ _require-makoto-cli:
         exit 1
     fi
 
-# Reset demo state (clear generated DBOMs, fetched data, attestations)
+# Reset demo state (clear generated DBOMs and fetched data)
 demo-clean:
     #!/usr/bin/env bash
     echo "Cleaning generated artifacts..."
     rm -f dboms/config.dbom.json dboms/iris.dbom.json
-    rm -f attestations/config.origin.json attestations/iris.origin.json
-    rm -f attestations/*_filtered.transform.json
+    rm -f dboms/*_filtered.dbom.json
     rm -f data/external/iris.csv
     rm -f data/local/*_filtered.*
     echo "✓ Clean. Pre-existing sample-metrics DBOM preserved."
