@@ -7,7 +7,6 @@ on:
     paths:
       - 'data/**'
       - 'dboms/**'
-      - 'attestations/**'
   schedule: daily on weekdays
 permissions:
   contents: read
@@ -32,10 +31,10 @@ safe-outputs:
     max: 3
   noop:
 steps:
-  - name: Install dependencies and clone DBOM toolkit
-    run: |
-      pip install pyyaml
-      git clone https://github.com/makoto-project/makoto-cli.git makoto-cli
+  - name: Clone DBOM toolkit
+    run: git clone https://github.com/makoto-project/makoto-cli.git makoto-cli
+  - name: Install Python dependencies (Makoto SDK + transitive deps)
+    run: pip install -r makoto-cli/requirements.txt pyyaml
   - name: Install just
     uses: extractions/setup-just@v2
 ---
@@ -65,8 +64,8 @@ just --justfile makoto-cli/Justfile gate both
 Capture both stdout and stderr. The pipeline will:
 1. Discover data assets in `data/`
 2. Fetch external datasets from `data/external/sources.yaml`
-3. Auto-generate missing origin attestations and DBOMs
-4. Validate all DBOMs using the Makoto 4-step verification
+3. Auto-generate missing DBOMs (one self-contained `<name>.dbom.json` per asset, schema `v0.1`)
+4. Validate all DBOMs (schema, data hash, signature)
 
 ### Step 2: Get Status Summary
 
@@ -129,7 +128,7 @@ For each failing asset, create a separate issue:
 
 **Asset**: `data/local/[filename]`
 **DBOM**: `dboms/[name].dbom.json`
-**Failure Step**: [Which of the 4 Makoto verification steps failed]
+**Failure Step**: [Which validation step failed — Read DBOM, Locate data file, Schema (v0.1), Data hash, or Signature]
 
 ### Error Details
 
@@ -137,7 +136,7 @@ For each failing asset, create a separate issue:
 
 ### Recommended Fix
 
-[Based on the failure type, suggest what to do — e.g., regenerate the DBOM, check the file hash, fix the attestation format]
+[Based on the failure type, suggest what to do — e.g., regenerate the DBOM, check the file hash, restore the signer]
 ```
 
 Before creating an issue, check if there's already an open issue with the `[DBOM]` prefix for the same asset to avoid duplicates.

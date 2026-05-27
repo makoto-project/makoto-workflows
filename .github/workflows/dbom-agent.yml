@@ -16,7 +16,6 @@ on:
     paths:
       - 'data/**'
       - 'dboms/**'
-      - 'attestations/**'
 
 permissions:
   contents: read
@@ -38,11 +37,11 @@ jobs:
       - name: Install just
         uses: extractions/setup-just@v2
 
-      - name: Install Python dependencies
-        run: pip install pyyaml
-
       - name: Clone makoto-cli CLI toolkit
         run: git clone https://github.com/makoto-project/makoto-cli.git makoto-cli
+
+      - name: Install Python dependencies (Makoto SDK + transitive deps)
+        run: pip install -r makoto-cli/requirements.txt pyyaml
 
       - name: Run DBOM gate pipeline
         run: just --justfile makoto-cli/Justfile gate ${{ github.event.inputs.mode || 'both' }}
