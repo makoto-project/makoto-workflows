@@ -2,8 +2,6 @@
 /makoto-cli/
 
 # Generated demo artifacts (just demo-clean to remove)
-attestations/*
-!attestations/sample-metrics.origin.json
 dboms/*
 !dboms/sample-metrics.dbom.json
 data/external/*

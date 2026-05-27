@@ -1,18 +1,27 @@
 {
-  "dbomVersion": "1.0.0",
-  "dataset": {
-    "name": "sample-metrics",
-    "version": "1.0.0",
-    "created": "2025-01-15T10:30:00Z",
-    "makotoLevel": "L1"
+  "schema_version": "0.1",
+  "id": "dbom-273e674b-88e3-438a-bd4a-73f438f6966b",
+  "created_at": "2026-05-27T17:55:38Z",
+  "source": {
+    "uri": "github://makoto-project/makoto-workflows/data/local/sample-metrics.csv",
+    "hash": {
+      "algorithm": "sha256",
+      "value": "0673cdba2b1be1db29ee1c12db32e2c92cc6ab70135ba3bd01bf12b63caecb5e"
+    },
+    "format": "csv"
   },
-  "sources": [
+  "signature": {
+    "algorithm": "sha256",
+    "value": "8916c38bcd33bae2205590a6a29a5170c9dc28a4ef2ae9cf6fcaefd7b8755040",
+    "signer": "github:makoto-project"
+  },
+  "lineage": [
     {
-      "name": "sample-metrics",
-      "attestationRef": "attestations/sample-metrics.origin.json",
-      "makotoLevel": "L1",
-      "geography": "US-WEST-2"
+      "step": 1,
+      "description": "Direct ingestion (dataset version 1.0.0)",
+      "tool": "makoto-cli (https://github.com/makoto-project/makoto-cli)",
+      "input_hash": "n/a",
+      "output_hash": "0673cdba2b1be1db29ee1c12db32e2c92cc6ab70135ba3bd01bf12b63caecb5e"
     }
-  ],
-  "transformations": []
+  ]
 }
