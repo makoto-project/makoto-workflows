@@ -9,15 +9,16 @@ A traditional GitHub Actions workflow that runs the DBOM gate pipeline as a dete
 | Trigger | When |
 |---------|------|
 | `workflow_dispatch` | Manual — choose mode from the Actions UI |
-| `push` on `data/**`, `dboms/**`, `attestations/**` | Automatic — when data files change |
+| `push` on `data/**`, `dboms/**` | Automatic — when data files change |
 
 ## What It Does
 
 1. Checks out the repo
 2. Sets up Python 3.12 and installs `just`
 3. Clones the [makoto-project/makoto-cli](https://github.com/makoto-project/makoto-cli) toolkit
-4. Runs `just gate` with the selected mode
-5. Posts the status table to the GitHub Actions step summary
+4. `pip install -r makoto-cli/requirements.txt` (installs the [Makoto SDK](https://github.com/makoto-project/usemakoto.dev/tree/main/sdk/python))
+5. Runs `just gate` with the selected mode
+6. Posts the status table to the GitHub Actions step summary
 
 ## Modes
 
@@ -33,7 +34,7 @@ A traditional GitHub Actions workflow that runs the DBOM gate pipeline as a dete
 2. Select the mode from the dropdown
 3. Click **Run workflow**
 
-Or push a change to any file under `data/`, `dboms/`, or `attestations/` to trigger automatically.
+Or push a change to any file under `data/` or `dboms/` to trigger automatically.
 
 ## Differences from Agentic Workflow
 

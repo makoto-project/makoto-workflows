@@ -13,10 +13,9 @@ An agentic workflow that **discovers**, **fetches**, **attests**, and **gates** 
 │    Discover   │-->│     Fetch     │-->│ Auto-Generate │-->│     Gate      │
 │    assets     │   │   external    │   │     DBOMs     │   │   validate    │
 └───────────────┘   └───────────────┘   └───────────────┘   └───────────────┘
-  Scan data/ for      Download from       Create origin       4-step Makoto
-  CSV, JSON, etc.     URLs in sources     attestations +      verification:
-                      .yaml               DBOM for assets     fetch, verify,
-                                          missing them        hash, lineage
+  Scan data/ for      Download from       Self-contained      makoto SDK
+  CSV, JSON, etc.     URLs in sources     v0.1 DBOM per       verify: schema,
+                      .yaml               asset (Makoto SDK)  data hash, sig
 ```
 
 ### Two Modes
@@ -71,7 +70,7 @@ See [docs/actions-workflow.md](docs/actions-workflow.md) for details.
 The [agentic workflow](.github/workflows/dbom-agentic.md) uses [GitHub Agentic Workflows](https://github.com/github/gh-aw) to run the same pipeline with an AI agent that reasons about results and reports via discussions/issues.
 
 - **Manual**: Actions → **DBOM Agentic Gate** → **Run workflow**
-- **Automatic**: Pushes to `data/`, `dboms/`, or `attestations/` trigger it
+- **Automatic**: Pushes to `data/` or `dboms/` trigger it
 - **Scheduled**: Runs daily on weekdays
 
 See [docs/agentic-workflow.md](docs/agentic-workflow.md) for details.
@@ -89,9 +88,7 @@ makoto-workflows/
 │   └── external/
 │       └── sources.yaml              # URLs to fetch (iris.csv)
 ├── dboms/
-│   └── sample-metrics.dbom.json      # Pre-existing DBOM (gate-pass demo)
-├── attestations/
-│   └── sample-metrics.origin.json    # Pre-existing origin attestation
+│   └── sample-metrics.dbom.json      # Pre-existing v0.1 DBOM (gate-pass demo)
 ├── makoto-cli/                       # Vendored CLI (via `just vendor`)
 ├── .github/workflows/
 │   ├── dbom-agent.yml                # GitHub Actions Workflow
@@ -117,41 +114,47 @@ makoto-workflows/
   ✓ iris.csv (9cc1c345c71b...)
 
 ▸ Step 3: Auto-generating missing DBOMs...
-  ✓ Attestation: attestations/iris.origin.json
-  ✓ DBOM:        dboms/iris.dbom.json
-  ✓ Attestation: attestations/config.origin.json
-  ✓ DBOM:        dboms/config.dbom.json
+  ✓ DBOM: dboms/iris.dbom.json   (schema v0.1, signer github:makoto-cli)
+  ✓ DBOM: dboms/config.dbom.json (schema v0.1, signer github:makoto-cli)
 
 ▸ Step 4: Checking DBOM coverage...
   ✓ All assets have DBOMs
 
 ▸ Step 5: Validating all DBOMs...
-  ✓ config.dbom.json: PASS
-  ✓ iris.dbom.json: PASS
-  ✓ sample-metrics.dbom.json: PASS
+  ✓ config.dbom.json:         PASS  (schema, hash, signature)
+  ✓ iris.dbom.json:           PASS  (schema, hash, signature)
+  ✓ sample-metrics.dbom.json: PASS  (schema, hash, signature)
 
-╔══════════════════════════════════════════════════════════╗
-║                   DBOM Status Summary                    ║
-╠══════════════════════════════════════════════════════════╣
-║ Asset                          │ DBOM     │ Level        ║
-╠══════════════════════════════════════════════════════════╣
-║ config                         │ ✓        │ L1           ║
-║ sample-metrics                 │ ✓        │ L1           ║
-║ iris                           │ ✓        │ L1           ║
-╚══════════════════════════════════════════════════════════╝
+✓ 3/3 DBOM(s) passed validation
+
+╔══════════════════════════════════════════════════════════════════════╗
+║                       DBOM Status Summary                            ║
+╠══════════════════════════════════════════════════════════════════════╣
+║ Asset                        │ DBOM   │ Schema   │ Signer             ║
+╠══════════════════════════════════════════════════════════════════════╣
+║ iris                         │ ✓      │ v0.1     │ github:makoto-cli  ║
+║ config                       │ ✓      │ v0.1     │ github:makoto-cli  ║
+║ sample-metrics               │ ✓      │ v0.1     │ github:makoto-proj ║
+╚══════════════════════════════════════════════════════════════════════╝
 ```
 
 ## Makoto Spec Alignment
 
-This demo targets **Makoto L1** (Provenance Exists):
+This demo targets **Makoto L1** (Provenance Exists) using the
+[Makoto Python SDK](https://github.com/makoto-project/usemakoto.dev/tree/main/sdk/python):
 
-- Attestations use **in-toto Statement v1** format
-- Origin predicate: `makoto.dev/origin/v1`
-- Transform predicate: `makoto.dev/transform/v1`
-- DBOM is an aggregate document referencing attestations
-- Validation follows the 4-step Makoto process
+- Each asset has a **self-contained v0.1 DBOM** at `dboms/<name>.dbom.json`
+  (no separate attestation files)
+- DBOMs follow the SDK's `v0.1` schema: `schema_version`, `id`, `created_at`,
+  `source.{uri,hash,format}`, `signature.{algorithm,value,signer}`, `lineage[]`
+- Origin is `lineage[0]`; transforms append additional `lineage[]` entries
+  with `input_hash`/`output_hash` chaining
+- At L1, `signature.value` is a deterministic mock (`sha256(file_hash + signer)`)
+- Validation runs through `makoto.verify()`: schema → data hash → signature
 
-See [docs/signing-roadmap.md](docs/signing-roadmap.md) for the path to L2 (Authentic Provenance) via Sigstore/cosign or GitHub GPG keys.
+See [docs/signing-roadmap.md](docs/signing-roadmap.md) for the path to L2
+(Authentic Provenance) via Sigstore/cosign or GitHub GPG keys wrapped around
+the v0.1 DBOM.
 
 ## Links
 

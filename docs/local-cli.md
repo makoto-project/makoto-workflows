@@ -6,6 +6,7 @@ Run the DBOM pipeline locally using [just](https://github.com/casey/just) and th
 
 - [just](https://github.com/casey/just) — `brew install just` (macOS) or `cargo install just`
 - Python 3.10+
+- `pip` — used to install the [Makoto Python SDK](https://github.com/makoto-project/usemakoto.dev/tree/main/sdk/python)
 - `pyyaml` — `pip install pyyaml` (only needed for external fetch)
 
 ## Setup
@@ -14,11 +15,12 @@ Run the DBOM pipeline locally using [just](https://github.com/casey/just) and th
 git clone https://github.com/makoto-project/makoto-workflows.git
 cd makoto-workflows
 
-# Vendor the makoto-cli CLI toolkit (clone into makoto-cli/)
+# Vendor the makoto-cli CLI toolkit (clones into makoto-cli/ and runs
+# `pip install -r requirements.txt`, which pulls in the Makoto SDK).
 just vendor
 ```
 
-The `vendor` recipe clones [makoto-project/makoto-cli](https://github.com/makoto-project/makoto-cli) into `makoto-cli/` (gitignored). Run it again to pull the latest version.
+The `vendor` recipe clones [makoto-project/makoto-cli](https://github.com/makoto-project/makoto-cli) into `makoto-cli/` (gitignored) and installs its Python dependencies (including the [`makoto` SDK](https://github.com/makoto-project/usemakoto.dev/tree/main/sdk/python)). Run it again to pull the latest version.
 
 ## Recipes
 
@@ -46,13 +48,13 @@ $ just demo
   ✓ iris.csv (9cc1c345c71b...)
 
 ▸ Step 3: Auto-generating missing DBOMs...
-  ✓ DBOM: dboms/config.dbom.json
-  ✓ DBOM: dboms/iris.dbom.json
+  ✓ DBOM: dboms/config.dbom.json   (schema v0.1, signer github:makoto-cli)
+  ✓ DBOM: dboms/iris.dbom.json     (schema v0.1, signer github:makoto-cli)
 
 ▸ Step 4: Validating all DBOMs...
-  ✓ config.dbom.json: PASS
-  ✓ iris.dbom.json: PASS
-  ✓ sample-metrics.dbom.json: PASS
+  ✓ config.dbom.json:         PASS  (schema, hash, signature)
+  ✓ iris.dbom.json:           PASS  (schema, hash, signature)
+  ✓ sample-metrics.dbom.json: PASS  (schema, hash, signature)
 ```
 
 ## Alias Pattern

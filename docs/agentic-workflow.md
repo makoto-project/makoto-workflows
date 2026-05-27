@@ -19,12 +19,12 @@ An AI-powered workflow using [GitHub Agentic Workflows (gh-aw)](https://github.c
 | Trigger | When |
 |---------|------|
 | `workflow_dispatch` | Manual dispatch from Actions UI |
-| `push` on `data/**`, `dboms/**`, `attestations/**` | When data files change |
+| `push` on `data/**`, `dboms/**` | When data files change |
 | `schedule` | Daily on weekdays (time scattered by compiler) |
 
 ## What the Agent Does
 
-1. **Setup** — Clones the `makoto-project/makoto-cli` toolkit, installs dependencies
+1. **Setup** — Clones the `makoto-project/makoto-cli` toolkit and `pip install`s its requirements (which includes the [Makoto SDK](https://github.com/makoto-project/usemakoto.dev/tree/main/sdk/python))
 2. **Run pipeline** — Executes `just gate both` (same as local/Actions)
 3. **Analyze** — Reads output, identifies failures, missing DBOMs, anomalies
 4. **Report** via safe outputs:
@@ -134,7 +134,7 @@ gh aw run dbom-agentic
 ```
 
 The workflow will also run automatically on:
-- Pushes to `data/**`, `dboms/**`, or `attestations/**`
+- Pushes to `data/**` or `dboms/**`
 - A daily weekday schedule
 
 ### 6. Check results
